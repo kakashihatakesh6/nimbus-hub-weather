@@ -12,10 +12,33 @@
 .weatherBox .active {
   background: rgb(105, 36, 36);
   color: green;
+
 }
 
 .cardBody {
   display: flex;
   width: 31vw;
   justify-content: center;
+}
+.weatherImage{
+  display: flex;
+}
+
+
+@media screen and (max-width: 480px) {
+  .weatherBox {
+    max-height: fit-content;
+    width: 69vw;
+  }
+  .cardBody{
+    width: inherit;
+  }
+  .windData{
+    padding-left: 2.5rem;
+  }
+  .weatherImage{
+    position: absolute;
+    top: 54%;
+    right: -19%;
+  }
 }

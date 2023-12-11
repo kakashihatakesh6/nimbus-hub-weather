@@ -15,19 +15,25 @@ export default function Home() {
   const [dataStatus, setDataStatus] = useState(false)
   const [backgroundImage2, setbackgroundImage2] = useState();
   const [showBox, setShowBox] = useState(true);
-  
+
 
   useEffect(() => {
 
-    setbackgroundImage2(`/white-cloud-blue-sky.jpg`)
+    setbackgroundImage2(`/background/clear.jpg`)
 
     const currentDateTime = () => {
       const timeElement = document.getElementById('current-time');
       const dateElement = document.getElementById('current-date');
-      const currentDateTime = new Date();
-      timeElement.textContent = currentDateTime.toLocaleTimeString().toUpperCase();
-      dateElement.textContent = currentDateTime.toLocaleDateString();
+      const timeString = new Date().toLocaleTimeString().split(":")
+      if (parseInt(timeString[0]) < 12) {
+        timeElement.textContent = `0 ${timeString[0]}:${timeString[1]} ${timeString[2].split(" ")[1]}`;
+        console.log("Parse Ho rha fu")
+      }
+      timeElement.textContent = `${timeString[0]}:${timeString[1]} ${timeString[2].split(" ")[1]}`;
+      const dateString = new Date().toDateString().split(" ");
+      dateElement.textContent = `${dateString[0]} \n ${dateString.splice(1, 3)} `;
     }
+
 
     currentDateTime()
     setInterval(currentDateTime, 1000);
@@ -43,7 +49,7 @@ export default function Home() {
     if (e.key == "Enter" && inputvalue !== "") {
 
       // Fetching data from API
-      fetchWeatherData(); 
+      fetchWeatherData();
       // tho
 
     }
@@ -60,8 +66,8 @@ export default function Home() {
     try {
 
       // Start Loading
-      setShowBox("hidden")
-      setIsloading(false)
+      // setShowBox(true)
+      setIsloading(true)
 
       const urlCurrentWeather = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=cd8990ee519781a0bc6968e77b06a2bc`;
       const url3Hour = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=metric&appid=cd8990ee519781a0bc6968e77b06a2bc&cnt=10`;
@@ -72,29 +78,30 @@ export default function Home() {
         fetch(url3Hour).then(res => res.json())
       ])
 
-      
-      
+
+
       // Processing data 
       if (cwdata.cod === "404") {
         setIsloading(false)
         setDataStatus(false)
         throw new Error(data.message);
       }
-      
+
       setData(data)
       setCwdata(cwdata)
-      
+
       // Set Values
       setWeather(cwdata.weather[0].main)
       setbackgroundImage2(`/background/${weather}.jpg?${new Date().getTime()}`);
-      
+
       // Stop Loading
-      setIsloading(false)
+
       setDataStatus(true)
-      setShowBox(true)
+      setIsloading(false)
+      setShowBox(false)
 
     } catch (error) {
-      seterror({ "error": `${error}` })
+      seterror("Please enter a valid city name")
     }
 
   }
@@ -109,16 +116,15 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="weather-favicon.png" />
       </Head>
+
       <main className={`${styles.homeMain}`} id='home-main' style={{ backgroundImage: `url(${backgroundImage2})` }}>
 
-        <header></header>
 
         <section className={styles.weatherSection} id='weather-section'>
 
           <div className="row input-container justify-content-center">
             <div className="container d-flex flex-column align-items-center">
 
-              {/* <h1 className={styles.title}>Welcome to Nimbus Hub</h1> */}
               <h3 className={styles.welcomeText}>Greetings, &nbsp;<span>Weather Enthusiast!</span></h3>
 
               <div className={styles.searchContainer}>
@@ -131,34 +137,69 @@ export default function Home() {
                 </span>
               </div>
 
+              {/* Error Message */}
+              {error && !dataStatus && !isLoading && <p className={styles.errorMessage}>{error}</p>}
+
             </div>
 
           </div>
 
-          {<div className="row " style={{ visibility: `${showBox? "visible" : "hidden"}`}}>
-            <div className={`container ${styles.timeContainer}`}>
+          <div className="row " >
+            <div className={`container ${styles.timeContainer}`} style={{ display: `${!dataStatus ? "flex" : "none"}` }}>
               <span><p className="display-2 my-3" id='current-time'></p></span>
-              <h3 className="mb-0" id='current-date'></h3> 
+              <h3 className="mb-0" id='current-date'></h3>
 
             </div>
           </div>
-          }
+
 
         </section>
 
         <div className="weatherHour" id='weather-hour'>
 
-          {error && !dataStatus && !isLoading && <p>{JSON.stringify(error)}</p>}
-
           {isLoading && <div className={`spinner-border ${styles.loadingIcon}`} role="status">
             <span className="visually-hidden">Loading...</span>
           </div>}
 
-          {data && dataStatus && <WeatherHour data={data} cwdata={cwdata} showBox={showBox} weather={weather} />}
+          {data && !isLoading && <WeatherHour data={data} cwdata={cwdata} showBox={showBox} weather={weather} />}
 
         </div>
-
       </main>
+
+
+
+      {/* <!-- ======= Footer ======= --> */}
+      <footer className={styles.footer} id="footer">
+
+
+        <div>
+          <h3>Nimbus-Hub</h3>
+          <p>Lorem ipsum, dolor sit elit. Saepe, sit. Error ex maiores voluptates a.</p>
+        </div>
+
+        <div className='d-flex flex-column justify-content-center'>
+          <div className={`${styles.credits} text-center`}>
+            Designed by <a href="">Nikhil</a>
+          </div>
+          <div className={styles.copyright}>
+            Copyright &copy; <strong><span>Nimbus-Hub</span></strong>. All Rights Reserved
+          </div>
+        </div>
+
+        <div className={styles.socialLinks}>
+          <a href="#" className="twitter"><i className="bi bi-twitter"></i></a>
+          <a href="#" className="facebook"><i className="bi bi-facebook"></i></a>
+          <a href="#" className="instagram"><i className="bi bi-instagram"></i></a>
+          <a href="#" className="google-plus"><i className="bi bi-git"></i></a>
+          <a href="#" className="linkedin"><i className="bi bi-linkedin"></i></a>
+        </div>
+
+
+      </footer>
+      {/*<!-- End Footer --> */}
+
+
+
     </>
   )
 }
