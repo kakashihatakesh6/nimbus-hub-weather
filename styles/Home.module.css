@@ -1,0 +1,75 @@
+.homeMain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6rem;
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+}
+.weatherSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+}
+
+.welcomeText {
+  display: flex;
+  margin-bottom: 15px;
+  color: rgb(52, 43, 226);
+}
+.welcomeText span {
+  color: rgb(81, 215, 215);
+}
+
+.searchContainer {
+  position: relative;
+  display: flex;
+}
+
+.searchInput {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  width: 40vw;
+  height: 37px;
+  border-radius: 5px;
+  border: none;
+}
+.searchInput:focus {
+  outline: none;
+}
+.searchContainer i {
+  position: absolute;
+  right: 15px;
+  top: 7px;
+  cursor: pointer;
+}
+.timeContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.timeContainer span {
+  font-family: "Domine", serif;
+  font-weight: 600;
+  color: #222768;
+}
+.timeContainer h3 {
+  font-family: cursive;
+  font-weight: 400;
+  color: #283b67;
+}
+
+.loadingIcon {
+  display: flex;
+  position: absolute;
+  top: 55%;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(173deg, #4d5c8d, #b3eeff, #dad645, transparent);
+  color: #ffffff;
+  left: 48%;
+}

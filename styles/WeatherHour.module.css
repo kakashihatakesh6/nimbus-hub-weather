@@ -1,0 +1,21 @@
+.weatherBox {
+  position: relative;
+  top: 18px;
+  z-index: 998;
+  max-height: 300px;
+  padding: 15px;
+  transition: all 0.2s ease-in-out;
+  background: linear-gradient(45deg, #f3f3f3, transparent);
+  
+}
+
+.weatherBox .active {
+  background: rgb(105, 36, 36);
+  color: green;
+}
+
+.cardBody {
+  display: flex;
+  width: 31vw;
+  justify-content: center;
+}
