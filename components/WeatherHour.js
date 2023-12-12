@@ -8,7 +8,7 @@ const WeatherHour = (props) => {
 
   return (
     
-    <div className='mt-5'>
+    <div className={styles.weatherHour}>
 
       {/*=========== Card Container ==============*/}
       {data && cwdata && <div className={`card my-2 container ${styles.weatherBox} `} id="weather-box" style={{ visibility: `${showBox}? "hidden": "visible"` }}>
@@ -59,7 +59,7 @@ const WeatherHour = (props) => {
                 <h5><strong>{parseInt(item.main.temp)}°C</strong></h5>
                 <h6><strong>{item.dt_txt.split(" ")[1].slice(0, 5)}</strong></h6>
               </div>
-              
+
             })
 
             }

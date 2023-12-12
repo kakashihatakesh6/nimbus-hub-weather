@@ -26,10 +26,10 @@ export default function Home() {
 
       const currentTime = new Date().toLocaleTimeString().split(":");
       const currentDate = new Date().toDateString();
-      
+
       const objClock = {
-        time : `${currentTime[0]}:${currentTime[1]} ${currentTime[2].split(" ")[1]}`,
-        date : currentDate
+        time: `${currentTime[0]}:${currentTime[1]} ${currentTime[2].split(" ")[1]}`,
+        date: currentDate
       }
       setClockData(objClock);
 
@@ -58,7 +58,7 @@ export default function Home() {
 
   // Fetching Data Function
   const fetchWeatherData = async () => {
-    
+
     const cityName = inputvalue;
 
     const objFetch = {
@@ -153,50 +153,52 @@ export default function Home() {
 
 
         {/*===============  {WEATHER BOX} ============  */}
-        <div className="weatherHour" id='weather-hour'>
+        <div className="weatherDiv" id='weather-hour'>
 
           {isLoading && <div className={`spinner-border ${styles.loadingIcon}`} role="status">
             <span className="visually-hidden">Loading...</span>
           </div>}
 
-          {dataStatus && !isLoading && <WeatherHour data={data} cwdata={cwdata} showBox={showBox} weather={weather} clockData={clockData}/>}
+          {dataStatus && !isLoading && <WeatherHour data={data} cwdata={cwdata} showBox={showBox} weather={weather} clockData={clockData} />}
 
         </div>
 
+
+
+
+
+        {/* ======= {Footer} ======= */}
+        <footer className={styles.footer} id="footer">
+
+
+          <div className={styles.footerTitle}>
+            <h3>Nimbus-Hub</h3>
+            <p>Lorem ipsum, dolor sit elit. Saepe, sit. Error ex maiores voluptates a.</p>
+          </div>
+
+          <div className={styles.copyrightBox}>
+            <div className={`${styles.credits} text-center`}>
+              Designed by <a href="">Nikhil</a>
+            </div>
+            <div className={styles.copyright}>
+              Copyright &copy; <strong><span>Nimbus-Hub</span></strong>. All Rights Reserved
+            </div>
+          </div>
+
+          <div className={styles.socialLinks}>
+            <a href="https://github.com/kakashihatakesh6" className="twitter"><i className="bi bi-twitter"></i></a>
+            <a href="https://github.com/kakashihatakesh6" className="facebook"><i className="bi bi-facebook"></i></a>
+            <a href="https://github.com/kakashihatakesh6" className="linkedin"><i className="bi bi-linkedin"></i></a>
+            <a href="https://github.com/kakashihatakesh6" className="instagram"><i className="bi bi-instagram"></i></a>
+            <a href="https://github.com/kakashihatakesh6" className="google-plus"><i className="bi bi-github"></i></a>
+            <a href="https://github.com/kakashihatakesh6" className="facebook"><i className="bi bi-skype"></i></a>
+          </div>
+
+
+        </footer>
+        {/*<!-- End Footer --> */}
 
       </main> {/* End of main  */}
-
-
-      {/* ======= {Footer} ======= */}
-      <footer className={styles.footer} id="footer">
-
-
-        <div className={styles.footerTitle}>
-          <h3>Nimbus-Hub</h3>
-          <p>Lorem ipsum, dolor sit elit. Saepe, sit. Error ex maiores voluptates a.</p>
-        </div>
-
-        <div className={styles.copyrightBox}>
-          <div className={`${styles.credits} text-center`}>
-            Designed by <a href="">Nikhil</a>
-          </div>
-          <div className={styles.copyright}>
-            Copyright &copy; <strong><span>Nimbus-Hub</span></strong>. All Rights Reserved
-          </div>
-        </div>
-
-        <div className={styles.socialLinks}>
-          <a href="https://github.com/kakashihatakesh6" className="twitter"><i className="bi bi-twitter"></i></a>
-          <a href="https://github.com/kakashihatakesh6" className="facebook"><i className="bi bi-facebook"></i></a>
-          <a href="https://github.com/kakashihatakesh6" className="linkedin"><i className="bi bi-linkedin"></i></a>
-          <a href="https://github.com/kakashihatakesh6" className="instagram"><i className="bi bi-instagram"></i></a>
-          <a href="https://github.com/kakashihatakesh6" className="google-plus"><i className="bi bi-github"></i></a>
-          <a href="https://github.com/kakashihatakesh6" className="facebook"><i className="bi bi-skype"></i></a>
-        </div>
-
-
-      </footer>
-      {/*<!-- End Footer --> */}
 
 
     </>

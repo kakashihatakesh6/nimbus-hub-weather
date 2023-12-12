@@ -1,6 +1,9 @@
 /*--------------------------------------------------------------
 # Weather Hour Component
 --------------------------------------------------------------*/
+.weatherHour{
+  margin-top: 3rem;
+}
 .weatherBox {
   position: relative;
   top: 18px;
@@ -73,31 +76,37 @@
 }
 
 @media screen and (max-width: 480px) {
+  .weatherHour{
+    margin-top: 0rem;
+  }
   .weatherBox {
     position: relative;
     max-height: fit-content;
-    width: 69vw;
+    width: 84vw;
   }
   .cardBody {
     width: inherit;
   }
   .windData {
-    padding-left: 2.5rem;
+    padding-left: 3.5rem;
   }
   .weatherImage {
     position: absolute;
     top: 40%;
-    right: 2%;
+    right: 9%;
     width: 34vw;
   }
   .weatherTime {
-    width: 66vw;
+    width: 84vw;
   }
   .weatherTime .slideContainer {
-    width: 60vw;
+    width: 71vw;
   }
   .timeSpan{
-    right: 17%;
+    right: 25%;
     top: -5%;
+  }
+  .weatherTime .weatherTimeItem {
+    margin-left: 28px;
   }
 }

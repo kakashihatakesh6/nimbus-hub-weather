@@ -116,17 +116,16 @@
   padding: 5px 22px;
   width: 100%;
   height: fit-content;
-  position: absolute;
-  bottom: 0;
   justify-content: space-between;
   align-items: flex-end;
+  position: fixed;
+  bottom: 0;
 }
 
 .footer h3 {
   font-size: 30px;
   font-weight: 700;
   color: #ffb03b;
-  position: relative;
   padding: 0;
   margin: 0 0 5px 0;
   font-family: "Satisfy", sans-serif;
@@ -189,13 +188,17 @@
 @media screen and (max-width: 480px) {
   .footer {
     display: flex;
-    position: absolute;
+    position: fixed;
+    bottom: 0;
     height: fit-content;
     flex-direction: column;
     justify-content: center;
     text-align: center;
     padding: 11px 10px;
+    z-index: 998;
+    background: linear-gradient(45deg, #313131, transparent);
   }
+
   .footer .copyrightBox {
     padding: 0;
   }
