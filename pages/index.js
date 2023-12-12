@@ -15,8 +15,6 @@ export default function Home() {
   const [dataStatus, setDataStatus] = useState(false)
   const [backgroundImage2, setbackgroundImage2] = useState(`/background/clear.jpg`);
   const [showBox, setShowBox] = useState(true);
-  const [wtime, setWTime] = useState();
-  const [wdate, setWDate] = useState();
   const [clockData, setClockData] = useState("");
 
 
@@ -53,6 +51,17 @@ export default function Home() {
       // Fetching data from API
       fetchWeatherData();
 
+    }
+  }
+
+  // Clicking on search icon
+  const handleClick = () => {
+    if (inputvalue !== "") {
+      fetchWeatherData();
+    }
+    else{
+      seterror("Please Enter the City Name");
+      setDataStatus(false)
     }
   }
 
@@ -134,7 +143,7 @@ export default function Home() {
               <div className={styles.searchContainer}>
                 <input type="text" className={`search-input ${styles.searchInput}`} value={inputvalue} onChange={handleOnchange}
                   placeholder="Enter your city name" name='city' aria-label="city" onKeyDown={handleKeyPress} required />
-                <span><i className="bi bi-search" ></i></span>
+                <span onClick={handleClick} ><i className="bi bi-search cursor-pointer"></i></span>
               </div>
 
               {/* Error Message */}
