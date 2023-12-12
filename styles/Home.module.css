@@ -20,6 +20,10 @@
 
 .welcomeText {
   display: flex;
+  justify-content: center;
+}
+.welcomeText h3 {
+  display: flex;
   margin-bottom: 15px;
   color: #ffb03b;
   font-family: "Satisfy", sans-serif;
@@ -60,7 +64,17 @@
     padding: 2rem;
   }
   .welcomeText {
-    font-size: 44px;
+    display: flex;
+    justify-content: center;
+    width: 82vw;
+    margin-left: 5rem;
+  }
+  .welcomeText h3 {
+    font-size: 32px;
+    margin-bottom: 0px;
+  }
+  .welcomeText span {
+    color: #303865;
   }
   .searchInput {
     width: 61vw;
@@ -114,7 +128,7 @@
   color: #fff;
   font-size: 14px;
   padding: 5px 22px;
-  width: 100%;
+  width: 100vw;
   height: fit-content;
   justify-content: space-between;
   align-items: flex-end;
@@ -132,7 +146,6 @@
 }
 
 .footer p {
-  font-size: 15;
   font-style: italic;
   padding: 0;
   margin: 0 0 4px 0;
@@ -141,7 +154,7 @@
 .footer .copyrightBox {
   display: flex;
   flex-direction: column;
-  padding-right: 9rem;
+  padding-right: 1rem;
   justify-content: center;
   font-family: "Noto Sans", sans-serif;
 }
@@ -194,23 +207,43 @@
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    padding: 11px 10px;
+    padding: 8px 10px;
     z-index: 998;
     background: linear-gradient(45deg, #2f2e2e, transparent);
+  }
+  .footer .footerTitle{
+    width: 100vw;
+  }
+
+  .footerTitle h3 {
+    font-size: 18px;
+  }
+  .footerTitle p {
+    font-size: 12px;
   }
 
   .footer .copyrightBox {
     padding: 0;
   }
   .footer .credits {
-    font-size: 17px;
+    font-size: 13px;
     width: 100vw;
+  }
+  .footer .credits a {
+    font-size: 16px;
+  }
+  .footer .copyright {
+    font-size: 13px;
   }
   .footer .socialLinks {
     width: 100vw;
     margin: 0;
   }
   .footer .socialLinks a {
-    margin: 0 0.5rem;
+    font-size: 12px;
+    padding: 5px 0;
+    width: 24px;
+    height: 24px;
+    transition: 0.5s;
   }
 }

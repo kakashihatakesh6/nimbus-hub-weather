@@ -39,8 +39,17 @@
   justify-content: center;
   padding-top: 10px;
 }
+.cardBody .currentWeather h4 {
+  font-size: 30px;
+}
+.cardBody .currentWeather h5 {
+  font-size: 61px;
+}
 .weatherImage {
   display: flex;
+}
+.weatherImage h4{
+  padding: 10px;
 }
 
 .weatherTime {
@@ -77,36 +86,63 @@
 
 @media screen and (max-width: 480px) {
   .weatherHour{
-    margin-top: 0rem;
+    margin-top: 0;
   }
   .weatherBox {
     position: relative;
-    max-height: fit-content;
-    width: 84vw;
+    height: fit-content;
+    width: 66vw;
+    padding: 10px;
+  }
+  .timeSpan{
+    right: 18%;
+    top: -5%;
   }
   .cardBody {
     width: inherit;
   }
+  .cardBody .currentWeather h4 {
+    font-size: 25px;
+  }
+  .cardBody .currentWeather h5 {
+    font-size: 23px;
+    font-weight: bold;
+  }
+  .cardBody .currentWeather p{
+    font-size: 11px;
+  }
   .windData {
     padding-left: 3.5rem;
+    font-size: 11px;
   }
   .weatherImage {
     position: absolute;
-    top: 40%;
-    right: 9%;
+    top: 38%;
+    right: 6%;
     width: 34vw;
   }
+  .weatherImage img{
+    width: 70px;
+    height: 70px;
+  }
+  .weatherImage h4{
+    padding: 0 5px;
+    font-size: 19px;
+  }
   .weatherTime {
-    width: 84vw;
+    width: 63vw;
   }
   .weatherTime .slideContainer {
-    width: 71vw;
+    width: 53vw;
   }
-  .timeSpan{
-    right: 25%;
-    top: -5%;
+  .weatherTimeItem h5 {
+    font-size: 18px;
+  }
+  .weatherTimeItem h6 {
+    font-size: 11px;
   }
   .weatherTime .weatherTimeItem {
-    margin-left: 28px;
+    margin-left: 17px;
+    padding: 4px 8px;
   }
 }

@@ -11,9 +11,9 @@ const WeatherHour = (props) => {
     <div className={styles.weatherHour}>
 
       {/*=========== Card Container ==============*/}
-      {data && cwdata && <div className={`card my-2 container ${styles.weatherBox} `} id="weather-box" style={{ visibility: `${showBox}? "hidden": "visible"` }}>
+      {data && cwdata && <div className={`card container ${styles.weatherBox} `} id="weather-box" style={{ visibility: `${showBox}? "hidden": "visible"` }}>
 
-        {/*=============== Time Badgs ================*/}
+        {/*=============== Time Badge ================*/}
         <div className={styles.timeSpan}>
           <span>
             {clockData.date} <strong> {clockData.time}</strong>
@@ -24,9 +24,9 @@ const WeatherHour = (props) => {
         <div className={`${styles.cardBody} weatherDetails row`} id='card-body'>
           
           {/* col-1  */}
-          <div className="col-lg-5 col-md-12 text-center">
-            <h4 className="mb-1 sfw-normal" style={{ fontSize: "30px" }}>{data.city.name}, {data.city.country}</h4>
-            <h4 style={{ fontSize: "61px" }}>{parseInt(cwdata.main.temp)}°C</h4>
+          <div className={`col-lg-5 col-md-12 text-center ${styles.currentWeather}`}>
+            <h4 className="mb-1 sfw-normal">{data.city.name}, {data.city.country}</h4>
+            <h5>{parseInt(cwdata.main.temp)}°C</h5>
             <p>Max: <strong>{parseInt(cwdata.main.temp_max)}°C</strong>,
              Min: <strong>{parseInt(cwdata.main.temp_min)}°C</strong></p>
           </div>
@@ -41,7 +41,7 @@ const WeatherHour = (props) => {
           {/* col-3  */}
           <div className={`${styles.weatherImage} col-lg-3 col-md-12 d-flex flex-column align-items-center justify-content-center`}>
             <img src={`/diff-weather/${weather}.png`} alt="" id='weather-icon' width="96px" height="96px" />
-            <h4 style={{ fontSize: "25px", fontFamily: `'IBM Plex Mono', "monospace"`, fontWeight: "bold", padding: "10px" }}>{cwdata.weather[0].main}</h4>
+            <h4 style={{fontFamily: `'IBM Plex Mono', "monospace"`, fontWeight: "bold"}}>{cwdata.weather[0].main}</h4>
           </div>
 
         </div>

@@ -123,10 +123,12 @@ export default function Home() {
         <section className={styles.weatherSection} id='weather-section'>
 
           <div className="row input-container justify-content-center">
-            <div className="container d-flex flex-column align-items-center">
+            <div className="container d-flex flex-column justify-content-center align-items-center">
 
               {/*========= GREETING MESSAGE=========== */}
-              <h3 className={styles.welcomeText}>Greetings, &nbsp;<span>Weather Enthusiast!</span></h3>
+              <div className={styles.welcomeText} >
+                <h3>Greetings, &nbsp;<span>Weather Enthusiast!</span></h3>
+              </div>
 
               {/*============ {INPUT TAG} =============== */}
               <div className={styles.searchContainer}>
