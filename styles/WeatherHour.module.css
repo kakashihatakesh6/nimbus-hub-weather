@@ -1,3 +1,6 @@
+/*--------------------------------------------------------------
+# Weather Hour Component
+--------------------------------------------------------------*/
 .weatherBox {
   position: relative;
   top: 18px;
@@ -6,39 +9,95 @@
   padding: 15px;
   transition: all 0.2s ease-in-out;
   background: linear-gradient(45deg, #f3f3f3, transparent);
-  
+  border-radius: 20px;
 }
 
 .weatherBox .active {
   background: rgb(105, 36, 36);
   color: green;
+}
 
+.timeSpan {
+  display: flex;
+  position: absolute;
+  color: #303865;
+  right: 30%;
+  top: -6%;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 6px;
+  background: #ffb03b;
+  border-radius: 5px;
 }
 
 .cardBody {
   display: flex;
   width: 31vw;
   justify-content: center;
+  padding-top: 10px;
 }
-.weatherImage{
+.weatherImage {
   display: flex;
 }
 
+.weatherTime {
+  display: flex;
+  padding: 0 6px;
+  width: 29vw;
+}
+.weatherTime .slideContainer {
+  display: flex;
+  padding-top: 10px;
+  width: 31vw;
+  overflow-x: auto;
+}
+.slideContainer::-webkit-scrollbar {
+  display: none;
+}
+.weatherTime .weatherTimeItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 7px;
+  border: 1px solid;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+.weatherTime h5 {
+  font-size: 25px;
+  color: #1c1c57;
+}
+.weatherTime h6 {
+  font-size: 12px;
+  color: #403104;
+}
 
 @media screen and (max-width: 480px) {
   .weatherBox {
+    position: relative;
     max-height: fit-content;
     width: 69vw;
   }
-  .cardBody{
+  .cardBody {
     width: inherit;
   }
-  .windData{
+  .windData {
     padding-left: 2.5rem;
   }
-  .weatherImage{
+  .weatherImage {
     position: absolute;
-    top: 54%;
-    right: -19%;
+    top: 40%;
+    right: 2%;
+    width: 34vw;
+  }
+  .weatherTime {
+    width: 66vw;
+  }
+  .weatherTime .slideContainer {
+    width: 60vw;
+  }
+  .timeSpan{
+    right: 17%;
+    top: -5%;
   }
 }

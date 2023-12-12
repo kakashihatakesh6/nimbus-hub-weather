@@ -1,17 +1,21 @@
+/*--------------------------------------------------------------
+# Section 
+--------------------------------------------------------------*/
 .homeMain {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 6rem;
   width: 100%;
   height: 100vh;
   background-size: cover;
   background-position-y: bottom;
+  overflow-x: hidden;
 }
 .weatherSection {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding-top: 6rem;
 }
 
 .welcomeText {
@@ -52,10 +56,13 @@
 }
 
 @media screen and (max-width: 480px) {
+  .weatherSection {
+    padding: 2rem;
+  }
   .welcomeText {
     font-size: 44px;
   }
-  .searchInput{
+  .searchInput {
     width: 61vw;
   }
 }
@@ -91,20 +98,12 @@
   left: 48%;
 }
 
-.errorMessage{
+.errorMessage {
   margin-top: 10px;
   color: #5a2a15;
   font-size: 18px;
   font-weight: bold;
 }
-
-
-
-
-
-
-
-
 
 /*--------------------------------------------------------------
 # Footer
@@ -116,14 +115,12 @@
   font-size: 14px;
   padding: 5px 22px;
   width: 100%;
-  height: 100px;
+  height: fit-content;
   position: absolute;
   bottom: 0;
   justify-content: space-between;
-  align-items: end;
+  align-items: flex-end;
 }
-
-
 
 .footer h3 {
   font-size: 30px;
@@ -142,6 +139,30 @@
   margin: 0 0 4px 0;
 }
 
+.footer .copyrightBox {
+  display: flex;
+  flex-direction: column;
+  padding-right: 9rem;
+  justify-content: center;
+  font-family: "Noto Sans", sans-serif;
+}
+
+.footer .copyright {
+  margin: 0 0 5px 0;
+  color: #fce4bf;
+}
+
+.footer .credits {
+  font-size: 19px;
+  color: #fce4bf;
+}
+.footer .credits a {
+  color: #ffb94f;
+  font-weight: 400;
+  font-family: "Satisfy", sans-serif;
+  font-size: 20px;
+}
+
 .footer .socialLinks {
   margin: 0 0 2px 0;
 }
@@ -149,7 +170,7 @@
 .footer .socialLinks a {
   font-size: 18px;
   display: inline-block;
-  background: #46423b;
+  background: #3a6552;
   color: #fff;
   line-height: 1;
   padding: 8px 0;
@@ -165,27 +186,18 @@
   background: #ffb03b;
 }
 
-.footer .copyright {
-  margin: 0 0 5px 0;
-}
-
-.footer .credits {
-  font-size: 19px;
-}
-.footer .credits a{
-  color: #eca334;
-  font-weight: 400;
-  font-family: "Satisfy", sans-serif;
-}
-
 @media screen and (max-width: 480px) {
   .footer {
     display: flex;
+    position: absolute;
     height: fit-content;
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    padding: 8px 16px;
+    padding: 11px 10px;
+  }
+  .footer .copyrightBox {
+    padding: 0;
   }
   .footer .credits {
     font-size: 17px;
@@ -195,8 +207,7 @@
     width: 100vw;
     margin: 0;
   }
-  .footer .socialLinks a{
+  .footer .socialLinks a {
     margin: 0 0.5rem;
   }
-
 }

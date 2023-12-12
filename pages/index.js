@@ -13,29 +13,31 @@ export default function Home() {
   const [error, seterror] = useState()
   const [weather, setWeather] = useState('')
   const [dataStatus, setDataStatus] = useState(false)
-  const [backgroundImage2, setbackgroundImage2] = useState();
+  const [backgroundImage2, setbackgroundImage2] = useState(`/background/clear.jpg`);
   const [showBox, setShowBox] = useState(true);
+  const [wtime, setWTime] = useState();
+  const [wdate, setWDate] = useState();
+  const [clockData, setClockData] = useState("");
 
 
   useEffect(() => {
 
-    setbackgroundImage2(`/background/clear.jpg`)
-
     const currentDateTime = () => {
-      const timeElement = document.getElementById('current-time');
-      const dateElement = document.getElementById('current-date');
-      const timeString = new Date().toLocaleTimeString().split(":")
-      if (parseInt(timeString[0]) < 12) {
-        timeElement.textContent = `0 ${timeString[0]}:${timeString[1]} ${timeString[2].split(" ")[1]}`;
-        console.log("Parse Ho rha fu")
+
+      const currentTime = new Date().toLocaleTimeString().split(":");
+      const currentDate = new Date().toDateString();
+      
+      const objClock = {
+        time : `${currentTime[0]}:${currentTime[1]} ${currentTime[2].split(" ")[1]}`,
+        date : currentDate
       }
-      timeElement.textContent = `${timeString[0]}:${timeString[1]} ${timeString[2].split(" ")[1]}`;
-      const dateString = new Date().toDateString().split(" ");
-      dateElement.textContent = `${dateString[0]} \n ${dateString.splice(1, 3)} `;
+      setClockData(objClock);
+
     }
 
-
     currentDateTime()
+
+    // Calling Every Second
     setInterval(currentDateTime, 1000);
 
   }, [])
@@ -50,35 +52,35 @@ export default function Home() {
 
       // Fetching data from API
       fetchWeatherData();
-      // tho
 
     }
   }
 
   // Fetching Data Function
   const fetchWeatherData = async () => {
-
-    const currentWeatherApi = `https://api.openweathermap.org/data/2.5/weather?q=delhi&units=metric&appid=cd8990ee519781a0bc6968e77b06a2bc`;
-    const threeHourApi = `https://api.openweathermap.org/data/2.5/forecast?q={city}&units=metric&appid=cd8990ee519781a0bc6968e77b06a2bc`;
-
+    
     const cityName = inputvalue;
+
+    const objFetch = {
+      appid: "cd8990ee519781a0bc6968e77b06a2bc",
+      city: cityName,
+      units: "metric",
+      cnt: "10"
+    }
 
     try {
 
       // Start Loading
-      // setShowBox(true)
       setIsloading(true)
 
-      const urlCurrentWeather = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=cd8990ee519781a0bc6968e77b06a2bc`;
-      const url3Hour = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=metric&appid=cd8990ee519781a0bc6968e77b06a2bc&cnt=10`;
+      const urlCurrentWeather = `https://api.openweathermap.org/data/2.5/weather?q=${objFetch.city}&units=${objFetch.units}&appid=${objFetch.appid}`;
+      const url3Hour = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=${objFetch.units}&appid=${objFetch.appid}&cnt=${objFetch.cnt}`;
 
       // Fetching weather data from api 
       const [cwdata, data] = await Promise.all([
         fetch(urlCurrentWeather).then(res => res.json()),
         fetch(url3Hour).then(res => res.json())
       ])
-
-
 
       // Processing data 
       if (cwdata.cod === "404") {
@@ -95,18 +97,16 @@ export default function Home() {
       setbackgroundImage2(`/background/${weather}.jpg?${new Date().getTime()}`);
 
       // Stop Loading
-
       setDataStatus(true)
       setIsloading(false)
       setShowBox(false)
 
     } catch (error) {
-      seterror("Please enter a valid city name")
+      seterror("Please enter a valid city name");
+      setDataStatus(false)
     }
 
   }
-
-
 
   return (
     <>
@@ -125,59 +125,58 @@ export default function Home() {
           <div className="row input-container justify-content-center">
             <div className="container d-flex flex-column align-items-center">
 
+              {/*========= GREETING MESSAGE=========== */}
               <h3 className={styles.welcomeText}>Greetings, &nbsp;<span>Weather Enthusiast!</span></h3>
 
+              {/*============ {INPUT TAG} =============== */}
               <div className={styles.searchContainer}>
-
                 <input type="text" className={`search-input ${styles.searchInput}`} value={inputvalue} onChange={handleOnchange}
                   placeholder="Enter your city name" name='city' aria-label="city" onKeyDown={handleKeyPress} required />
-
-                <span>
-                  <i className="bi bi-search" ></i>
-                </span>
+                <span><i className="bi bi-search" ></i></span>
               </div>
 
               {/* Error Message */}
               {error && !dataStatus && !isLoading && <p className={styles.errorMessage}>{error}</p>}
 
             </div>
-
           </div>
 
+          {/* ============= {TIME CONTAINER} ================= */}
           <div className="row " >
             <div className={`container ${styles.timeContainer}`} style={{ display: `${!dataStatus ? "flex" : "none"}` }}>
-              <span><p className="display-2 my-3" id='current-time'></p></span>
-              <h3 className="mb-0" id='current-date'></h3>
-
+              <span><p className="display-2 my-3" id='current-time'>{clockData.time}</p></span>
+              <h3 className="mb-0" id='current-date'>{clockData.date}</h3>
             </div>
           </div>
 
+        </section> {/* End of section  */}
 
-        </section>
 
+        {/*===============  {WEATHER BOX} ============  */}
         <div className="weatherHour" id='weather-hour'>
 
           {isLoading && <div className={`spinner-border ${styles.loadingIcon}`} role="status">
             <span className="visually-hidden">Loading...</span>
           </div>}
 
-          {data && !isLoading && <WeatherHour data={data} cwdata={cwdata} showBox={showBox} weather={weather} />}
+          {dataStatus && !isLoading && <WeatherHour data={data} cwdata={cwdata} showBox={showBox} weather={weather} clockData={clockData}/>}
 
         </div>
-      </main>
 
 
+      </main> {/* End of main  */}
 
-      {/* <!-- ======= Footer ======= --> */}
+
+      {/* ======= {Footer} ======= */}
       <footer className={styles.footer} id="footer">
 
 
-        <div>
+        <div className={styles.footerTitle}>
           <h3>Nimbus-Hub</h3>
           <p>Lorem ipsum, dolor sit elit. Saepe, sit. Error ex maiores voluptates a.</p>
         </div>
 
-        <div className='d-flex flex-column justify-content-center'>
+        <div className={styles.copyrightBox}>
           <div className={`${styles.credits} text-center`}>
             Designed by <a href="">Nikhil</a>
           </div>
@@ -187,17 +186,17 @@ export default function Home() {
         </div>
 
         <div className={styles.socialLinks}>
-          <a href="#" className="twitter"><i className="bi bi-twitter"></i></a>
-          <a href="#" className="facebook"><i className="bi bi-facebook"></i></a>
-          <a href="#" className="instagram"><i className="bi bi-instagram"></i></a>
-          <a href="#" className="google-plus"><i className="bi bi-git"></i></a>
-          <a href="#" className="linkedin"><i className="bi bi-linkedin"></i></a>
+          <a href="https://github.com/kakashihatakesh6" className="twitter"><i className="bi bi-twitter"></i></a>
+          <a href="https://github.com/kakashihatakesh6" className="facebook"><i className="bi bi-facebook"></i></a>
+          <a href="https://github.com/kakashihatakesh6" className="linkedin"><i className="bi bi-linkedin"></i></a>
+          <a href="https://github.com/kakashihatakesh6" className="instagram"><i className="bi bi-instagram"></i></a>
+          <a href="https://github.com/kakashihatakesh6" className="google-plus"><i className="bi bi-github"></i></a>
+          <a href="https://github.com/kakashihatakesh6" className="facebook"><i className="bi bi-skype"></i></a>
         </div>
 
 
       </footer>
       {/*<!-- End Footer --> */}
-
 
 
     </>
