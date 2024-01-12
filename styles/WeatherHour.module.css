@@ -8,7 +8,7 @@
   position: relative;
   top: 18px;
   z-index: 998;
-  max-height: 300px;
+  max-height: fit-content;
   padding: 15px;
   transition: all 0.2s ease-in-out;
   background: linear-gradient(45deg, #f3f3f3, transparent);

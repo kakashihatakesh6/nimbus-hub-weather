@@ -40,6 +40,13 @@ export default function Home() {
 
   }, [])
 
+  // Changing background image imediately to avoid delay on image changing
+  useEffect(() => {
+    if (weather !== '') {
+      setbackgroundImage2(`/background/${weather}.jpg`);
+    }
+  }, [weather])
+
   const handleOnchange = (e) => {
     setinputvalue(e.target.value)
   }
@@ -59,7 +66,7 @@ export default function Home() {
     if (inputvalue !== "") {
       fetchWeatherData();
     }
-    else{
+    else {
       seterror("Please Enter the City Name");
       setDataStatus(false)
     }
