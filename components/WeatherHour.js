@@ -6,8 +6,26 @@ const WeatherHour = (props) => {
 
   const { data, cwdata, showBox, weather, clockData } = props;
 
-  return (
+
+  //Enable mouse scroll on slide container
+  useEffect(() => {
+
+    const scrollContainer = document.getElementById('slide-container');
+
+    scrollContainer.addEventListener('wheel', (event) => {
+      event.preventDefault();
+
+      // Adjust the scroll speed as needed
+      const scrollAmount = event.deltaY * 0.1;
+
+      scrollContainer.scrollLeft += scrollAmount;
+    });
     
+  }, [])
+
+
+  return (
+
     <div className={styles.weatherHour}>
 
       {/*=========== Card Container ==============*/}
@@ -22,13 +40,13 @@ const WeatherHour = (props) => {
 
         {/*=============== Card Body ================*/}
         <div className={`${styles.cardBody} weatherDetails row`} id='card-body'>
-          
+
           {/* col-1  */}
           <div className={`col-lg-5 col-md-12 text-center ${styles.currentWeather}`}>
             <h4 className="mb-1 sfw-normal">{data.city.name}, {data.city.country}</h4>
             <h5>{parseInt(cwdata.main.temp)}°C</h5>
             <p>Max: <strong>{parseInt(cwdata.main.temp_max)}°C</strong>,
-             Min: <strong>{parseInt(cwdata.main.temp_min)}°C</strong></p>
+              Min: <strong>{parseInt(cwdata.main.temp_min)}°C</strong></p>
           </div>
 
           {/* col-2  */}
@@ -41,7 +59,7 @@ const WeatherHour = (props) => {
           {/* col-3  */}
           <div className={`${styles.weatherImage} col-lg-3 col-md-12 d-flex flex-column align-items-center justify-content-center`}>
             <img src={`/diff-weather/${weather}.png`} alt="" id='weather-icon' width="96px" height="96px" />
-            <h4 style={{fontFamily: `'IBM Plex Mono', "monospace"`, fontWeight: "bold"}}>{cwdata.weather[0].main}</h4>
+            <h4 style={{ fontFamily: `'IBM Plex Mono', "monospace"`, fontWeight: "bold" }}>{cwdata.weather[0].main}</h4>
           </div>
 
         </div>
@@ -50,8 +68,8 @@ const WeatherHour = (props) => {
         <div className={`${styles.weatherTime}`}>
 
           {/* Left arrow */
-          <i class="bi bi-caret-left pt-4"></i> }
-          <div className={`${styles.slideContainer}`}>
+            <i class="bi bi-caret-left pt-4"></i>}
+          <div id='slide-container' className={`${styles.slideContainer}`}>
 
             {data.list.map(item => {
 
@@ -65,7 +83,7 @@ const WeatherHour = (props) => {
             }
 
           </div>
-          <i class="bi bi-caret-right-fill pt-4"></i> 
+          <i class="bi bi-caret-right-fill pt-4"></i>
           {/* Right arrow */}
 
         </div>

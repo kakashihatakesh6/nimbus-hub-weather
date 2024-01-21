@@ -11,6 +11,7 @@
   max-height: fit-content;
   padding: 15px;
   transition: all 0.2s ease-in-out;
+  transition: background-color 1000ms;
   background: linear-gradient(45deg, #f3f3f3, transparent);
   border-radius: 20px;
 }
