@@ -22,7 +22,7 @@ https://nimbus-hub-weather.netlify.app/
 
 ## Demo
 
-![image](./src/assets/images/demo-image-new.jpg)
+![nimbes-hub-dashboard](https://github.com/kakashihatakesh6/nimbus-hub-weather/assets/95236055/5c58bc55-ceb9-4cf9-a710-b82b636c5525)
 
 ## Installation
 
