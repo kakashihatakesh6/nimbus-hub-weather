@@ -15,8 +15,8 @@ https://nimbus-hub-weather.netlify.app/
 
 ## Features
 
--   Virtual keyboard with support for Hebrew, English, Arabic, Ukranian, Russian, Portuguese, Spanish, Macedonian, Hindi and Persian languages.
--   Emoji keyboard for expressive input.
+-   Weather App with support for Temperature, .
+-   Responsive UI with intuitive effects.
 -   Stylish and customizable interface.
 -   Undo and redo functionality.
 
@@ -46,13 +46,9 @@ npm run dev
 The project follows a specific structure to organize its files and directories. Below is an overview of the main components:
 
 ```plaintext
-virtual-keyboard/
+nimbus-hub-weather/
 │
-├── src/                    # Source code directory
-│   ├── assets/             # Static assets like images, icons, etc.
-│   │   ├── images/         # Image files
-│   │   │   ├── emojiButton.webp       # Image of emoji
-│   │   │   └── backgroundImage.jpg    # Image of background
+├── nimbus-hub-weather/     # Source code directory
 │   ├── components/         # React components
 │   │   ├── VirtualKeyboard.jsx     # Main virtual keyboard component
 │   │   ├── SpecialButtons.jsx      # Component for special buttons such as:redo, undo and clear all the text
@@ -63,6 +59,10 @@ virtual-keyboard/
 |   |   ├── KeyBoardStylee.css
 │   │   ├── keyboardStyles.css    # Styles for the virtual keyboard
 │   │   └── ...             # Other files
+│   ├── assets/             # Static assets like images, icons, etc.
+│   │   ├── images/         # Image files
+│   │   │   ├── emojiButton.webp       # Image of emoji
+│   │   │   └── backgroundImage.jpg    # Image of background
 │   ├── redux/              # 
 |   |   ├── reducer.js      # 
 |   |   └── store.js        # 
@@ -77,9 +77,11 @@ virtual-keyboard/
 │   └── ...
 │
 ├── .gitignore              # Git ignore file
+├── LICENCE                 # License file
+├── package-lock.json            # Node.js project configuration
 ├── package.json            # Node.js project configuration
 ├── README.md               # Project documentation
-├── index.html              # Main HTML file
+├── yarn.lock               # Main HTML file
  ...                        # Other configuration files
 ```
 
