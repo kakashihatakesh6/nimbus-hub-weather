@@ -9,6 +9,7 @@ https://nimbus-hub-weather.netlify.app/
 ## Table of Contents
 
 -   [Features](#features)
+-   [Technologies Used](#technologyused).
 -   [Demo](#demo)
 -   [Installation](#installation)
 -   [Contributing](#contributing)
@@ -16,10 +17,21 @@ https://nimbus-hub-weather.netlify.app/
 
 ## Features
 
--   Weather App with support for Temperature, .
--   Responsive UI with intuitive effects.
--   Stylish and customizable interface.
--   Undo and redo functionality.
+•	Frontend development using ReactJS, Next JS, Bootstrap for creating interactive, intuitive and responsive UI. <br>
+•	Open Weather API implementation using fetchAPI and Axios. <br>
+•	Custom Card for showing weather related information such as wind, current temp, min/max temp. <br>
+•	Responsive and intuitive UI for across devices such as desktop and mobile. <br>
+•	Create efficient and hightly optimized react components. <br>
+•	Made Custom spinner to show a status while fetching the data from api. <br>
+•	Successfully Deployed the application on Vercel and Netlify. <br>
+
+
+## Technologies Used
+
+•	Frontend – React JS, Next JS, Javascript, Bootstrap <br>
+•	Backend  – JavaScript <br>
+•	API – Open Weather API <br>
+•	NPM Packages – Cors, Axios, React Dom, 
 
 ## Demo
 
@@ -83,7 +95,7 @@ nimbus-hub-weather/
 
 ## Contributing
 
-We welcome contributions from the community to help improve the Virtual Keyboard App. If you would like to contribute, please follow these steps:
+We welcome contributions from the community to help improve the Nimbus Hub Weather App. If you would like to contribute, please follow these steps:
 <br>
 
 ### First of all, please give the repository a star 🌟
@@ -117,10 +129,10 @@ Fixes #10
 ```
 ## Contact
 
-If you have any questions, suggestions, or issues regarding the virtual-keyboard, 
-please feel free to reach out to us through the [Issues](https://github.com/chavi362/virtual-keyboard/issues) section of this repository.
+If you have any questions, suggestions, or issues regarding the Nimbus-Hub, 
+please feel free to reach out to us through the [Issues]( https://github.com/kakashihatakesh6/nimbus-hub-weather/issues) section of this repository.
 You can also discuss with as in the discussion template, there are there meaningfull discussion.
-You can also contact me via my [email](mailto:chavideveloper@gmail.com).
+You can also contact me via my [email](mailto:imnikhil133@gmail.com).
 
 ## License
 
