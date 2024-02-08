@@ -2,7 +2,8 @@
 
 # Nimbus Hub Weather Application
 
-This is a React-based virtual keyboard app with support for multiple languages and emoji input.
+This is a React-based Weather Web Application with support for multiple weather related data such as current temp, wind, 3 hour forecast etc.
+Visit the Application -
 https://nimbus-hub-weather.netlify.app/
 
 ## Table of Contents
