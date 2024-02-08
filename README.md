@@ -28,7 +28,7 @@ https://nimbus-hub-weather.netlify.app/
 ## Technologies Used
 
 •	Frontend – React JS, Next JS, Javascript, Bootstrap <br>
-•	Backend – Fetch API, Open Weather API
+•	Backend – Fetch API, Open Weather API <br>
 •	NPM Packages – Cors, Axios, React Dom, 
 
 ## Demo
