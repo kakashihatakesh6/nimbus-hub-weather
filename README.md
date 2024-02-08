@@ -1,6 +1,4 @@
-![Alt Virtual_Keyboard](https://github.com/solvman/virtual-keyboard/assets/4379350/947b49ba-c81d-484b-ae95-044452553101)
 ![nimbus-cover-main](https://github.com/kakashihatakesh6/nimbus-hub-weather/assets/95236055/3bd58b9a-e2b3-4d36-a181-dbfa8122d48c)
-![nimbus-cover-demo](https://github.com/kakashihatakesh6/nimbus-hub-weather/assets/95236055/f16cace4-ad64-40e3-9d86-6925aa777605)
 
 # Nimbus Hub Weather Application
 
