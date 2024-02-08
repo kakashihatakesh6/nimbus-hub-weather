@@ -1,5 +1,5 @@
 /*--------------------------------------------------------------
-# Section 
+# Home Section 
 --------------------------------------------------------------*/
 .homeMain {
   display: flex;
@@ -33,10 +33,14 @@
 .welcomeText span {
   color: #303865;
 }
-
+.searchBox{
+  display: flex;
+  flex-direction: row;
+}
 .searchContainer {
   position: relative;
   display: flex;
+  flex-direction: row;
 }
 
 .searchInput {
@@ -57,6 +61,22 @@
   right: 13px;
   top: 16px;
   cursor: pointer;
+}
+.location{
+  margin-left: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.location i{
+  padding-top: 4px;
+  font-size: 27px;
+  color: white;
+}
+.location i:hover{
+  color: rgb(192, 137, 26);
 }
 
 @media screen and (max-width: 480px) {

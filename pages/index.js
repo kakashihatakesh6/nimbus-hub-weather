@@ -3,9 +3,12 @@ import Head from 'next/head'
 import styles from '@/styles/Home.module.css'
 import { useState, useEffect } from 'react'
 import WeatherHour from '@/components/WeatherHour';
+import { ToastContainer, Zoom, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 
 export default function Home() {
-
   const [data, setData] = useState();
   const [cwdata, setCwdata] = useState(null);
   const [inputvalue, setinputvalue] = useState('')
@@ -16,6 +19,9 @@ export default function Home() {
   const [backgroundImage2, setbackgroundImage2] = useState(`/background/clear.jpg`);
   const [showBox, setShowBox] = useState(true);
   const [clockData, setClockData] = useState("");
+
+  const [latitude, setLatitude] = useState(null);
+  const [longitude, setLongitude] = useState(null);
 
 
   useEffect(() => {
@@ -117,11 +123,150 @@ export default function Home() {
       setIsloading(false)
       setShowBox(false)
 
+      // Show toast message
+      setTimeout(() => {
+        showToastGreetings(weather)
+
+      }, 1000);
+
+
     } catch (error) {
       seterror("Please enter a valid city name");
       setDataStatus(false)
+      toast('🌞 Please Enter the right credentials!', {
+        position: "bottom-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Zoom,
+      });
     }
 
+  }
+
+  const showToastGreetings = (message) => {
+    const Greetings = {
+      clear: '🌞 Bask in the warmth of a cloudless sky today. Perfect for outdoor adventures!',
+      clouds: '⛅ A mix of sun and clouds awaits you today. Perfect weather for a leisurely stroll!',
+      mist: '💨 The world is shrouded in mist, lending an air of mystery to the surroundings. Take it slow and enjoy the ethereal beauty!',
+      fog: '🌞 A veil of fog blankets the landscape, creating an enchanting ambiance. Embrace the tranquil atmosphere!"',
+      rain: "☔ It's a rainy day outside, but don't let that dampen your spirits! Embrace the cozy atmosphere indoors.",
+      haze: '🌞 Through the haze, find beauty in the subtle dance of light and shadow. Stay safe, embrace the moment, and remember: clarity follows every mist.',
+      smoke: '🌞 Through the haze, find beauty in the subtle dance of light and shadow. Stay safe, embrace the moment, and remember: clarity follows every mist.',
+      snow: '🌞 The world is dressed in a pristine blanket of snow, transforming it into a winter wonderland',
+      thuderstorm: '⚡Listen to the symphony of thunder and rain as nature puts on a dramatic show outside.'
+    }
+
+    console.log(weather)
+    toast(Greetings.smoke, {
+      position: "top-left",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      transition: Zoom,
+    });
+  }
+
+  const handleMyLocation = () => {
+    fetchGeoData();
+  }
+
+  useEffect(() => {
+    // Check if the Geolocation API is supported by the browser
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        // Success callback
+        (position) => {
+          setLatitude(position.coords.latitude);
+          setLongitude(position.coords.longitude);
+          // fetchLocationData(position.coords.latitude, position.coords.longitude);
+        },
+        // Error callback
+        (error) => {
+          console.error('Error getting user location:', error);
+        }
+      );
+    } else {
+      console.error('Geolocation is not supported by this browser.');
+    }
+  }, []);
+
+  const fetchGeoData = async () => {
+    const cityName = inputvalue;
+
+    const objFetch = {
+      appid: "cd8990ee519781a0bc6968e77b06a2bc",
+      city: cityName,
+      units: "metric",
+      cnt: "10"
+    }
+
+    try {
+
+      // Start Loading
+      setIsloading(true)
+
+      const urlCurrentWeather = `https://api.openweathermap.org/data/2.5/weather?lat=${parseFloat(latitude).toFixed(2)}&lon=${parseFloat(longitude).toFixed(2)}&units=${objFetch.units}&appid=${objFetch.appid}`;
+      const url3Hour = `https://api.openweathermap.org/data/2.5/forecast?lat=${parseFloat(latitude).toFixed(2)}&lon=${parseFloat(longitude).toFixed(2)}&units=${objFetch.units}&appid=${objFetch.appid}&cnt=${objFetch.cnt}`;
+
+      // Fetching weather data from api 
+      const [cwdata, data] = await Promise.all([
+        fetch(urlCurrentWeather).then(res => res.json()),
+        fetch(url3Hour).then(res => res.json())
+      ])
+      console.log("CWD=>", cwdata);
+      console.log("CWD=>", data);
+
+
+      // Processing data 
+      if (cwdata.cod === "404") {
+        setIsloading(false)
+        setDataStatus(false)
+        throw new Error(data.message);
+      }
+
+      setData(data)
+      setCwdata(cwdata)
+
+      // Set Values
+      setWeather(cwdata.weather[0].main)
+      setbackgroundImage2(`/background/${weather}.jpg?${new Date().getTime()}`);
+
+      // Stop Loading
+      setDataStatus(true)
+      setIsloading(false)
+      setShowBox(false)
+
+      // Show toast message
+      setTimeout(() => {
+        showToastGreetings(weather)
+
+      }, 1000);
+
+
+    } catch (error) {
+      seterror("Please enter a valid city name");
+      setDataStatus(false)
+      toast('🌞 Please Enter the right credentials!', {
+        position: "bottom-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Zoom,
+      });
+    }
   }
 
   return (
@@ -132,6 +277,20 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="weather-favicon.png" />
       </Head>
+
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+        transition={Zoom}
+      />
 
       <main className={`${styles.homeMain}`} id='home-main' style={{ backgroundImage: `url(${backgroundImage2})` }}>
 
@@ -147,12 +306,19 @@ export default function Home() {
               </div>
 
               {/*============ {INPUT TAG} =============== */}
-              <div className={styles.searchContainer}>
-                <input type="text" className={`search-input ${styles.searchInput}`} value={inputvalue} onChange={handleOnchange}
-                  placeholder="Enter your city name" name='city' aria-label="city" onKeyDown={handleKeyPress} required />
-                <span onClick={handleClick} ><i className="bi bi-search cursor-pointer"></i></span>
-              </div>
+              <div className={styles.searchBox}>
 
+                <div className={styles.searchContainer}>
+                  <input type="text" className={`search-input ${styles.searchInput}`} value={inputvalue} onChange={handleOnchange}
+                    placeholder="Enter your city name" name='city' aria-label="city" onKeyDown={handleKeyPress} required />
+                  <span ><i onClick={handleClick} className="bi bi-search cursor-pointer"></i></span>
+                </div>
+
+                <div className={styles.location} onClick={handleMyLocation}>
+                  <i className="bi bi-crosshair"></i>
+                </div>
+
+              </div>
               {/* Error Message */}
               {error && !dataStatus && !isLoading && <p className={styles.errorMessage}>{error}</p>}
 
@@ -170,7 +336,7 @@ export default function Home() {
         </section> {/* End of section  */}
 
 
-        {/*===============  {WEATHER BOX} ============  */}
+        {/*===============  { WEATHER BOX } ============*/}
         <div className="weatherDiv" id='weather-hour'>
 
           {isLoading && <div className={`spinner-border ${styles.loadingIcon}`} role="status">
@@ -215,8 +381,6 @@ export default function Home() {
 
       </footer>
       {/*<!-- End Footer --> */}
-
-
 
 
     </>
