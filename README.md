@@ -9,6 +9,7 @@ https://nimbus-hub-weather.netlify.app/
 ## Table of Contents
 
 -   [Features](#features)
+-   [Technologies Used](#technologyused).
 -   [Demo](#demo)
 -   [Installation](#installation)
 -   [Contributing](#contributing)
@@ -16,13 +17,13 @@ https://nimbus-hub-weather.netlify.app/
 
 ## Features
 
-•	Frontend development using ReactJS, Next JS, Bootstrap for creating interactive, intuitive and responsive UI.
-•	Open Weather API implementation using fetchAPI and Axios.
-•	Custom Card for showing weather related information such as wind, current temp, min/max temp.
-•	Responsive and intuitive UI for across devices such as desktop and mobile.
-•	Create efficient and hightly optimized react components.
-•	Made Custom spinner to show a status while fetching the data from api.
-•	Successfully Deployed the application on Vercel and Netlify.
+•	Frontend development using ReactJS, Next JS, Bootstrap for creating interactive, intuitive and responsive UI. <br>
+•	Open Weather API implementation using fetchAPI and Axios. <br>
+•	Custom Card for showing weather related information such as wind, current temp, min/max temp. <br>
+•	Responsive and intuitive UI for across devices such as desktop and mobile. <br>
+•	Create efficient and hightly optimized react components. <br>
+•	Made Custom spinner to show a status while fetching the data from api. <br>
+•	Successfully Deployed the application on Vercel and Netlify. <br>
 
 
 ## Technologies Used
