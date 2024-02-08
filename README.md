@@ -51,39 +51,34 @@ nimbus-hub-weather/
 │
 ├── nimbus-hub-weather/     # Source code directory
 │   ├── components/         # React components
-│   │   ├── VirtualKeyboard.jsx     # Main virtual keyboard component
-│   │   ├── SpecialButtons.jsx      # Component for special buttons such as:redo, undo and clear all the text
-|   |   ├── Screen.jsx      # the text the user typed
-|   |   ├── EmojiKeyBoard.jsx
-|   |   ├── KeyBoard.jsx
-|   |   ├── KeyBoardLanguage.tsx
-|   |   ├── KeyBoardStylee.css
-│   │   ├── keyboardStyles.css    # Styles for the virtual keyboard
-│   │   └── ...             # Other files
-│   ├── assets/             # Static assets like images, icons, etc.
-│   │   ├── images/         # Image files
+│   │   ├── WeatherHour.js     # Component for showing the the weather details on a card
+│   │   ├── WeatherDay.js      # Component for special buttons such as:redo, undo and clear all the text
+│   ├── pages/              # Routes
+│   │   ├── api/               # Next API Routes
+│   │   │   ├── hello.js            # Api route
+│   │   ├── _app.js            # App function for calling main Weather component
+│   │   └── _document.js       # Structure file
+│   │   └── index.js           # Main application component
+│   ├── public/             # Public directory for static files
+│   │   ├── background/         # Image files
+│   │   ├── diff-weather/       # Image files
 │   │   │   ├── emojiButton.webp       # Image of emoji
 │   │   │   └── backgroundImage.jpg    # Image of background
-│   ├── redux/              # 
-|   |   ├── reducer.js      # 
-|   |   └── store.js        # 
-│   ├── App.css             # Root css
-│   ├── App.jsx             # App function for calling main VirtualKeyboard component
-│   ├── index.css           # Body css
-│   ├── letterStyle.js      # Font class
-│   ├── main.jsx            # Main application component
-│
-├── public/                 # Public directory for static files
-│   ├── keyboard.png        # Image of keyboard
-│   └── ...
-│
-├── .gitignore              # Git ignore file
-├── LICENCE                 # License file
-├── package-lock.json            # Node.js project configuration
-├── package.json            # Node.js project configuration
-├── README.md               # Project documentation
-├── yarn.lock               # Main HTML file
- ...                        # Other configuration files
+│   ├── styles/             # Public directory for static files
+│   │   ├── globals.css/                  # Root css file
+│   │   ├── Home.module.css/              # Home Component Css file
+│   │   ├── WeatherHour.module.css/       # Weather Component Css file
+    │
+    ├── .eslinntrc              # Eslint file
+    ├── .gitignore              # Git ignore file
+    ├── jsconfig.json           # JS Configue file
+    ├── LICENCE                 # License file
+    ├── next.config.js          # Next Configue file
+    ├── package-lock.json       # Node.js project configuration
+    ├── package.json            # Node.js project configuration
+    ├── README.md               # Project documentation
+    ├── yarn.lock               # Yarn Package Manager
+     ...                        # Other configuration files
 ```
 
 ## Contributing
