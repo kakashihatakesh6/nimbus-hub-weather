@@ -83,7 +83,7 @@ nimbus-hub-weather/
 
 ## Contributing
 
-We welcome contributions from the community to help improve the Virtual Keyboard App. If you would like to contribute, please follow these steps:
+We welcome contributions from the community to help improve the Nimbus Hub Weather App. If you would like to contribute, please follow these steps:
 <br>
 
 ### First of all, please give the repository a star 🌟
@@ -117,10 +117,10 @@ Fixes #10
 ```
 ## Contact
 
-If you have any questions, suggestions, or issues regarding the virtual-keyboard, 
-please feel free to reach out to us through the [Issues](https://github.com/chavi362/virtual-keyboard/issues) section of this repository.
+If you have any questions, suggestions, or issues regarding the Nimbus-Hub, 
+please feel free to reach out to us through the [Issues]( https://github.com/kakashihatakesh6/nimbus-hub-weather/issues) section of this repository.
 You can also discuss with as in the discussion template, there are there meaningfull discussion.
-You can also contact me via my [email](mailto:chavideveloper@gmail.com).
+You can also contact me via my [email](mailto:imnikhil133@gmail.com).
 
 ## License
 
